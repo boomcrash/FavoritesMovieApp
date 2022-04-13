@@ -1,11 +1,15 @@
 import 'package:favoritesmovieapp/User/bloc/bloc_user.dart';
-import 'package:favoritesmovieapp/movie/bloc/principal_trip.dart';
+import 'package:favoritesmovieapp/User/ui/screens/sign_in_screen.dart';
+import 'package:favoritesmovieapp/principal_trip.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -16,10 +20,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
         child: MaterialApp(
-        title: "Favorites Movie APP",
-        home: PrincipalTrip(),
-        )
-        , bloc: UserBloc());
+          title: "Favorites Movie APP",
+          home: SignInScreen(),
+        ),
+        bloc: UserBloc());
   }
 
 }

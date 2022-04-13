@@ -1,10 +1,15 @@
+import 'package:favoritesmovieapp/User/bloc/bloc_user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 
 class Profile extends StatelessWidget{
+  late UserBloc userbloc;
+
   @override
   Widget build(BuildContext context) {
 
+    userbloc =BlocProvider.of(context);
     void accion(){
       print("se presiono el boton");
     }
@@ -166,8 +171,8 @@ class Profile extends StatelessWidget{
                       backgroundColor: Colors.white,
                       mini: true,
                       tooltip: "Fav",
-                      onPressed: accion,
-                      child: Icon(Icons.wallet_giftcard,color: Colors.blue)
+                      onPressed: userbloc.signOut(),
+                      child: Icon(Icons.exit_to_app,color: Colors.blue)
                   ),
                 ),
             ],
