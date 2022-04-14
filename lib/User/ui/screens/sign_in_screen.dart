@@ -5,7 +5,7 @@ import 'package:favoritesmovieapp/widgets/button_rounded.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
-
+import 'package:favoritesmovieapp/User/model/user.dart' as us;
 class SignInScreen extends StatefulWidget{
 
   @override
@@ -53,7 +53,16 @@ class _SignInScreen extends State<SignInScreen>{
               ),
               ButtonRounded(text: "Entra con Gmail",
                   onPressed: (){
-                    userBloc.signIn().then((UserCredential user) => print("El usuario es ${user.user?.displayName}"));
+                    userBloc.signIn().then((UserCredential user) {
+                      print("El usuario es ${user.user?.displayName}");
+
+                      userBloc.updateUserDataFirestore(us.User(
+                          uid: (user.user?.uid ?? ""),
+                          username: (user.user?.displayName ?? ""),
+                          email:(user.user?.email ?? ""),
+                          photoURL:(user.user?.photoURL ?? ""),
+                      ));
+                    });
                 },
                 width: 300,
                   height: 50,

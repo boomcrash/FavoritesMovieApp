@@ -48,22 +48,27 @@ class _PrincipalTrip extends State<PrincipalTrip>{
                 return CupertinoTabView(
                   builder: (BuildContext context) =>SeeTrips(),
                 );
+                break;
               case 1:
                 return CupertinoTabView(
                   builder: (BuildContext context) =>MostrarDestacados(),
                 );
+                break;
               case 2:
                 return CupertinoTabView(
                   builder: (BuildContext context) {
-                    BlocProvider<UserBloc>(
+                    return BlocProvider<UserBloc>(
                       bloc: UserBloc(),
                       child: Profile(),
                     );
-                    throw e;
                   },
                 );
-              default:
-                throw e;
+                break;
+              default: {
+                return CupertinoTabView(
+                    builder: (BuildContext context) => HomeTrips() );
+              }
+              break;
             }
         },
       ),

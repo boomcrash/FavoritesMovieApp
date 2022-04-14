@@ -1,11 +1,17 @@
+import 'package:flutter/cupertino.dart';
+
+import '../../User/model/user.dart';
+
 class Movie{
+  String id;
   String nombre;
   String tipo;
   String anio;
-  String enlaceVideo;
-  String enlaceImagen;
+  String urlImagen;
+  int? likes;
+  final User? owner;
 
-  Movie(this.nombre, this.tipo, this.anio, this.enlaceVideo, this.enlaceImagen);
+  Movie( {Key? key ,this.owner,required this.id,required this.nombre,required this.tipo,required this.anio,required this.urlImagen,this.likes});
 
 
 }
