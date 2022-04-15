@@ -1,6 +1,8 @@
+import 'dart:io';
 import 'dart:math';
 
 import 'package:favoritesmovieapp/User/bloc/bloc_user.dart';
+import 'package:favoritesmovieapp/movie/ui/screens/add_movie_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
@@ -68,6 +70,12 @@ class UserInfo extends StatelessWidget {  @override
       void salir(){
       userbloc.signOut();
       }
+
+      void regresar(){
+        File? image;
+        Navigator.push(context,MaterialPageRoute(builder: (BuildContext context) => AddMovieScreen(image: image )));
+      }
+
       final text=Container(
       width: 350,
       margin: const EdgeInsets.only(
@@ -158,11 +166,13 @@ class UserInfo extends StatelessWidget {  @override
       );
 
       final buttons=Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
       children: [
       Container(
       margin: EdgeInsets.only(
       top: 200,
-      left: 22
+        right: 22
       ),
       child: Row(
       children: [
@@ -173,19 +183,7 @@ class UserInfo extends StatelessWidget {  @override
       onPressed: accion,
       child: Icon(Icons.description,color: Colors.blue,)
       ),
-      Container(
-      margin: EdgeInsets.only(
-      left: 22
-      ),
-      child:
-      FloatingActionButton(
-      backgroundColor: Colors.white,
-      mini: true,
-      tooltip: "Fav",
-      onPressed: accion,
-      child: Icon(Icons.wallet_giftcard,color: Colors.blue)
-      ),
-      ),
+
 
       Container(
       width: 80,
@@ -198,21 +196,8 @@ class UserInfo extends StatelessWidget {  @override
       backgroundColor: Colors.white,
       mini: true,
       tooltip: "Fav",
-      onPressed: accion,
+      onPressed: regresar,
       child: Icon(Icons.add_circle_outline,color: Colors.grey,size: 70,)
-      ),
-      ),
-      Container(
-      margin: EdgeInsets.only(
-      left: 22
-      ),
-      child:
-      FloatingActionButton(
-      backgroundColor: Colors.white,
-      mini: true,
-      tooltip: "Fav",
-      onPressed: accion,
-      child: Icon(Icons.wallet_giftcard,color: Colors.blue)
       ),
       ),
 

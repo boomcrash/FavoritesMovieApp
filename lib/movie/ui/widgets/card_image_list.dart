@@ -11,10 +11,10 @@ class CardImageList extends StatelessWidget{
 
         scrollDirection: Axis.horizontal,
         children: <Widget>[
-          CardImage("assets/img/mirador1.jpg"),
-          CardImage("assets/img/mirador2.jpg"),
-          CardImage("assets/img/mirador3.jpg"),
-          CardImage("assets/img/mirador4.jpg"),
+          CardImage(imagen: "assets/img/mirador1.jpg",iconData: Icons.favorite_border,width: 400,height: 250,),
+          CardImage(imagen: "assets/img/mirador2.jpg",iconData: Icons.favorite_border,width: 400,height: 250,),
+          CardImage(imagen: "assets/img/mirador3.jpg",iconData: Icons.favorite_border,width: 400,height: 250,),
+          CardImage(imagen: "assets/img/mirador4.jpg",iconData: Icons.favorite_border,width: 400,height: 250,),
         ],
       ),
     );

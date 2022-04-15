@@ -3,9 +3,14 @@ import 'package:favoritesmovieapp/movie/ui/widgets/floating_action_button.dart';
 import 'package:flutter/material.dart';
 
 class CardImage extends StatelessWidget{
-  String imagen="assets/img/mirador1.jpg";
+  final double height=350;
+  final double width=350;
+  double left=350;
+  final String imagen;
+  final VoidCallback? onPressFabIcon;
+  final IconData iconData;
 
-  CardImage(this.imagen);
+  CardImage({Key? key, required this.imagen,required width,required height, this.onPressFabIcon,required this.iconData}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +19,6 @@ class CardImage extends StatelessWidget{
       height: 200,
       width: 370,
       margin: const EdgeInsets.only(
-        top: 90,
         left: 20,
       ),
       decoration: BoxDecoration(
@@ -37,7 +41,7 @@ class CardImage extends StatelessWidget{
       alignment: Alignment(-0.9,1.02),
       children: [
         card,
-        FloatingActionButtonGreen()
+        FloatingActionButtonGreen(iconData: iconData)
       ],
     );
   }
